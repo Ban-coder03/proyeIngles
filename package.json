@@ -1,0 +1,9 @@
+{
+  "name": "ctp-santa-lucia-alertas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CTP Santa Lucía push notification system using Firebase Cloud Messaging and Vercel Serverless Functions",
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  }
+}
