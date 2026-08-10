@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTP Santa Lucía | Alert System</title>
+  <link rel="icon" href="data:,">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            escudoBlue: {
+              DEFAULT: '#1e4d8b',
+              dark: '#123661',
+              light: '#2f6cbf'
+            },
+            escudoGold: '#f2c14e'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(160deg, #123661 0%, #1e4d8b 45%, #2f6cbf 100%);
+      min-height: 100vh;
+    }
+    .card {
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.06);
+    }
+    #toast-container {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .toast {
+      animation: slideIn .25s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(120%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="text-white font-sans">
+
+  <div id="toast-container"></div>
+
+  <header class="max-w-3xl mx-auto pt-10 pb-6 px-4 text-center">
+    <div class="mx-auto mb-4 w-20 h-20 rounded-full bg-escudoGold/90 flex items-center justify-center shadow-lg">
+      <span class="text-3xl">⛪</span>
+    </div>
+    <h1 class="text-2xl md:text-3xl font-bold tracking-wide">CTP SANTA LUCÍA</h1>
+    <p class="text-escudoGold text-sm md:text-base mt-1 italic">"Studying is the best key to self-improvement"</p>
+    <p class="text-white/70 text-xs mt-1">Founded in 2006 · Institutional Alert System</p>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 pb-16 space-y-6">
+
+    <!-- Subscription -->
+    <section class="card rounded-2xl p-6 shadow-xl border border-white/10">
+      <h2 class="text-lg font-semibold mb-2">1. Enable notifications</h2>
+      <p class="text-white/70 text-sm mb-4">
+        Enable notifications on this device to receive institutional alerts
+        in real time, even with the tab closed.
+      </p>
+      <button id="btn-subscribe"
+        class="w-full md:w-auto px-6 py-3 rounded-xl bg-escudoGold text-escudoBlue-dark font-bold
+               hover:brightness-105 active:scale-95 transition disabled:opacity-50 disabled:cursor-not-allowed">
+        🔔 Enable / Subscribe to notifications
+      </button>
+      <p id="subscribe-status" class="text-sm mt-3 text-white/60"></p>
+    </section>
+
+    <!-- Send alerts -->
+    <section class="card rounded-2xl p-6 shadow-xl border border-white/10">
+      <h2 class="text-lg font-semibold mb-2">2. Send alert to everyone</h2>
+      <p class="text-white/70 text-sm mb-4">
+        For authorized staff use only. Clicking a button will send the
+        notification to all subscribed devices.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <button data-alert="earthquake"
+          class="alert-btn px-4 py-4 rounded-xl bg-orange-500 hover:bg-orange-600 active:scale-95
+                 transition font-bold flex flex-col items-center gap-1">
+          <span class="text-2xl">🌍</span> Earthquake Alert
+        </button>
+        <button data-alert="fire"
+          class="alert-btn px-4 py-4 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95
+                 transition font-bold flex flex-col items-center gap-1">
+          <span class="text-2xl">🔥</span> Fire Alert
+        </button>
+        <button data-alert="shooting"
+          class="alert-btn px-4 py-4 rounded-xl bg-slate-800 hover:bg-slate-900 active:scale-95
+                 transition font-bold flex flex-col items-center gap-1">
+          <span class="text-2xl">🚨</span> Shooting Alert
+        </button>
+      </div>
+      <p id="send-status" class="text-sm mt-4 text-white/60"></p>
+    </section>
+
+    <footer class="text-center text-white/40 text-xs pt-6">
+      CTP Santa Lucía · Notifications via Firebase Cloud Messaging
+    </footer>
+
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
