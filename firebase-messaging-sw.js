@@ -28,7 +28,7 @@ const firebaseConfig = {
   appId: "1:143271858197:web:e702305464ca74f237be1c",
   measurementId: "G-S4V6BP97ZM"
 };
-
+firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 // Handles notifications that arrive when the tab is NOT in the foreground
